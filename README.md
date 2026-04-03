@@ -30,6 +30,22 @@ The 14 data layers:
 
 ---
 
+## What the emails look like
+
+### Daily digest
+
+Portfolio summary with action badges (BUY MORE / KEEP / SELL), P&L, watchlist, and key takeaways:
+
+![Daily Digest Email](docs/sample-digest.png)
+
+### Urgent alert
+
+Red header, fired immediately when thesis-breaking events are detected:
+
+![Urgent Alert Email](docs/sample-urgent-alert.png)
+
+---
+
 ## Architecture
 
 ```
@@ -173,22 +189,6 @@ End-of-day summary across all holdings. Includes action badges (BUY MORE / KEEP 
 
 ### Weekend prep
 Sunday evening review. Covers macro trends, sector rotation, and thesis health heading into Monday.
-
----
-
-## What the emails look like
-
-### Daily digest
-
-Portfolio summary with action badges (BUY MORE / KEEP / SELL), P&L, watchlist, and key takeaways:
-
-![Daily Digest Email](docs/sample-digest.png)
-
-### Urgent alert
-
-Red header, fired immediately when thesis-breaking events are detected:
-
-![Urgent Alert Email](docs/sample-urgent-alert.png)
 
 ---
 
