@@ -66,7 +66,7 @@ All other components are free:
 | Component | Cost |
 |---|---|
 | Finnhub API | Free tier (60 calls/min) |
-| Reddit API | Free tier |
+| Reddit API | Free (personal/non-commercial use only, requires OAuth credentials) |
 | Quiver Quant (Congress) | Free tier |
 | GitHub Actions | Free (2,000 min/month) |
 | SEC EDGAR, BLS, GDELT, Wikimedia | Free (public APIs) |
