@@ -9,7 +9,7 @@
 
 ## What it does
 
-thesis-engine monitors your stock portfolio around the clock by pulling data from **14 independent layers**, synthesizing it through Claude, and alerting you when something threatens (or strengthens) your investment thesis.
+thesis-engine monitors your stock portfolio around the clock by pulling data from **14 independent layers**, synthesizing it through an LLM, and alerting you when something threatens (or strengthens) your investment thesis.
 
 The 14 data layers:
 
@@ -39,25 +39,27 @@ stocks.yaml (your portfolio config)
   14 parallel data layers (free APIs, no keys needed for most)
         |
         v
-  Claude synthesis (one API call per analysis run)
+  LLM synthesis (one API call per analysis run)
         |
         v
   Email alerts (urgent / daily digest / weekend prep)
 ```
 
-**Data flow**: On each run, the analyzer reads your `stocks.yaml`, dispatches all 14 data-fetching modules in parallel using `ThreadPoolExecutor`, collects the results into a single context bundle, and sends it to Claude with a carefully tuned system prompt. Claude decides whether an urgent alert is needed or if a standard digest suffices.
+**Data flow**: On each run, the analyzer reads your `stocks.yaml`, dispatches all 14 data-fetching modules in parallel using `ThreadPoolExecutor`, collects the results into a single context bundle, and sends it to the LLM with a carefully tuned prompt. thesis-engine decides whether an urgent alert is needed or if a standard digest suffices.
 
 ---
 
 ## Cost
 
-Everything except the LLM API is free. Your total cost depends on which Claude model you choose:
+Everything except the LLM API is free. Your total cost depends on which model you choose:
 
-| Claude Model | Approx. cost at ~200 runs/month | Tradeoff |
-|---|---|---|
-| Haiku 4.5 | ~$0.10/month | Fastest, cheapest. Good for routine monitoring. |
-| Sonnet 4.6 | ~$0.50/month | Best balance of quality and cost. Recommended. |
-| Opus 4.6 | ~$5/month | Deepest reasoning. Best for complex thesis evaluation. |
+| Claude Model | Speed | Quality | Best for |
+|---|---|---|---|
+| Haiku | Fastest | Good | Routine monitoring, testing |
+| Sonnet | Fast | Great | Daily use (recommended) |
+| Opus | Slower | Best | Deep thesis evaluation |
+
+At ~200 runs/month (hourly during market hours), expect to pay **pennies to a few dollars/month** depending on model. Check [Anthropic's pricing page](https://www.anthropic.com/pricing) for current rates.
 
 All other components are free:
 
@@ -70,7 +72,7 @@ All other components are free:
 | SEC EDGAR, BLS, GDELT, Wikimedia | Free (public APIs) |
 | Gmail SMTP | Free |
 
-You can switch models by changing one line in `analyzer.py`. Start with Haiku to test, move to Sonnet for daily use, try Opus if you want the sharpest analysis.
+Switch models by changing one line in `analyzer.py`. Start with Haiku to test, move up from there.
 
 ---
 
@@ -159,7 +161,7 @@ thesis-engine/
 ## Alert types
 
 ### Urgent alerts
-Sent immediately when Claude detects a thesis-breaking event:
+Sent immediately when thesis-engine detects a thesis-breaking event:
 - Major insider selling by C-suite
 - SEC investigation or fraud allegations
 - Dilutive offering announced
@@ -275,7 +277,7 @@ All portfolio configuration lives in `stocks.yaml`. This is the only file you ne
 | `Reddit 403` | Create a Reddit app at reddit.com/prefs/apps and add credentials to `.env` |
 | `Email not sending` | Ensure you're using a Gmail App Password with 2FA enabled |
 | `No data for ticker` | Some layers skip OTC/foreign stocks -- this is expected |
-| `Claude response empty` | Check your Anthropic API key and billing status |
+| `LLM response empty` | Check your Anthropic API key and billing status |
 | Tests failing | Run `source .venv/bin/activate && pytest -v` to see details |
 
 ---
