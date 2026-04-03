@@ -178,81 +178,17 @@ Sunday evening review. Covers macro trends, sector rotation, and thesis health h
 
 ## What the emails look like
 
-### Urgent alert example
+### Daily digest
 
-```
-Subject: [ALERT] Apr 03 -- NVDA thesis shaken: CFO sold $12M in shares
+Portfolio summary with action badges (BUY MORE / KEEP / SELL), P&L, watchlist, and key takeaways:
 
-NVDA (NVIDIA Corporation) -- THESIS STATUS: SHAKEN
+![Daily Digest Email](docs/sample-digest.png)
 
-Layer 12 (Insider Trades): CFO Colette Kress sold 14,200 shares at
-$850.12 = $12.1M. This is the third C-suite sale in 60 days.
-Coordinated selling pattern detected.
+### Urgent alert
 
-Layer 3 (Technicals): RSI 74.2 (overbought), MACD bearish crossover,
-Bollinger upper band extended. Composite score: 29% bullish.
+Red header, fired immediately when thesis-breaking events are detected:
 
-Layer 8 (Reddit): Mention velocity +340% vs 7-day avg on r/wallstreetbets.
-Sentiment skewing bearish (62% bear keywords).
-
-ACTION: KEEP -- but tighten stop. Insider selling is a yellow flag,
-not a red flag, unless accompanied by fundamental deterioration.
-Watch Q2 earnings on May 28 for confirmation.
-```
-
-### Daily digest example
-
-```
-Subject: Daily Digest -- Apr 03 | Portfolio +1.2%
-
-PORTFOLIO TOTAL: $4,820 | Net P&L: +$57 (+1.2%)
-
-AAPL  $212.40  +0.8% today  |  P&L: +5.1%  |  KEEP
-  Thesis INTACT. Services revenue beat leaked via supply chain
-  checks. Layer 5 (News): 3 positive headlines from Reuters, CNBC.
-
-NVDA  $878.50  +2.1% today  |  P&L: +3.4%  |  KEEP
-  Thesis INTACT. Blackwell production ramp confirmed by TSMC
-  earnings call. Layer 2: Revenue growth 112% YoY.
-
-MSFT  $435.20  -0.3% today  |  P&L: +3.6%  |  KEEP
-  Thesis INTACT. Azure growth stable at 31%. Layer 9 (Trends):
-  "Copilot" search volume +45% vs 30d avg.
-
-BIGGEST RISK: NVDA insider selling pattern (Layer 12). Three
-C-suite sales in 60 days totaling $28M. Not thesis-breaking
-yet but warrants monitoring.
-
-BIGGEST OPPORTUNITY: AMZN (watchlist) trading at 52-week low
-on AWS deceleration fears. Layer 2 shows forward PE 22x vs
-5-year avg 35x. Consider entry below $175.
-
-SUSTAINABILITY: No material ESG flags this cycle.
-```
-
-### Weekend prep example
-
-```
-Subject: Weekend Prep -- Apr 05 | Portfolio +2.8% this week
-
-MACRO CONTEXT:
-Fed Rate: 4.75% (holding) | 10yr: 4.21% (falling) | VIX: 16.2
-CPI: 2.8% (falling) | Unemployment: 3.9% | Oil: $78.40
-
-THIS WEEK'S THESIS UPDATES:
-- AAPL: INTACT. iPhone 17 supply chain ramp confirmed (Layer 6: 8-K)
-- NVDA: INTACT but watch insider selling (Layer 12)
-- MSFT: INTACT. Copilot enterprise revenue up (Layer 5: earnings PR)
-
-TOP 3 FOR MONDAY:
-1. NVDA lockup expiry Tuesday -- expect volatility
-2. CPI print Wednesday 8:30am -- consensus 2.7%
-3. AAPL supplier Foxconn reports Monday pre-market
-
-NEW DISCOVERIES:
-- CRWD (CrowdStrike): Cybersecurity spending up 18% YoY per GDELT.
-  Forward PE 45x vs growth 35%. Worth researching.
-```
+![Urgent Alert Email](docs/sample-urgent-alert.png)
 
 ---
 
