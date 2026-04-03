@@ -1,0 +1,11 @@
+anthropic>=0.40.0
+requests>=2.31.0
+pyyaml>=6.0
+pandas>=2.0.0
+ta>=0.11.0
+finnhub-python>=2.4.18
+praw>=7.7.0
+pytrends>=4.9.2
+python-dotenv>=1.0.0
+feedparser>=6.0.10
+schedule>=1.2.1

@@ -1,0 +1,60 @@
+# ======================================================================
+# thesis-engine -- Scheduled Analysis Workflow
+#
+# HOW TO USE:
+# 1. Copy this file to your PRIVATE repo (not the public fork)
+# 2. Rename to analyze.yml (remove .example)
+# 3. Add secrets in your repo: Settings > Secrets > Actions
+# 4. Enable GitHub Actions in your repo
+#
+# This runs the analyzer hourly during US market hours (Mon-Fri)
+# and once on Sunday evening for weekend prep.
+# ======================================================================
+
+name: thesis-engine
+
+on:
+  schedule:
+    # Hourly Mon-Fri 8am-5pm ET (12:00-21:00 UTC)
+    - cron: "0 12-21 * * 1-5"
+    # Sunday 6pm ET = 22:00 UTC Sunday
+    - cron: "0 22 * * 0"
+  workflow_dispatch:  # Manual trigger from Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run analyzer
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          REDDIT_USER_AGENT: thesis-engine/1.0
+          QUIVER_API_KEY: ${{ secrets.QUIVER_API_KEY }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        run: python analyzer.py --once
+
+      - name: Commit logs
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add logs/ context/ -f 2>/dev/null || true
+          git diff --staged --quiet 2>/dev/null || (git commit -m "Update logs -- $(date -u '+%Y-%m-%d %H:%M UTC')" && git push) || true

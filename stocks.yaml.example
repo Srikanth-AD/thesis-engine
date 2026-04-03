@@ -1,0 +1,113 @@
+# ──────────────────────────────────────────────────────────────
+# stocks.yaml — Your portfolio configuration
+# ──────────────────────────────────────────────────────────────
+#
+# This is the ONLY file you need to edit. It defines:
+#   - Your investment goals and risk profile
+#   - Which stocks you own (with thesis and cost basis)
+#   - Which stocks you're watching (lighter monitoring)
+#
+# Copy this file to stocks.yaml and customize it:
+#   cp stocks.yaml.example stocks.yaml
+#
+# Tips:
+#   - Keep your thesis short but specific (what must stay true?)
+#   - List thesis_risks honestly (what would make you sell?)
+#   - Update purchases when you buy more (DCA tracking)
+#   - Move stocks to watchlist when you sell but want to monitor
+# ──────────────────────────────────────────────────────────────
+
+meta:
+  investor_goal: "Long-term growth with a focus on AI and technology transformation. 5-10 year horizon."
+  risk_profile: "Moderate — willing to hold through volatility but not willing to ignore fundamental deterioration."
+
+portfolio:
+  - ticker: AAPL
+    name: Apple Inc.
+    sector: technology
+    role: core-holding
+    target_multiple: 30
+    thesis: >
+      Dominant ecosystem with 2B+ active devices. Services revenue growing 15%+ YoY
+      with 70%+ margins. AI integration across hardware creates switching cost moat.
+      Capital return program ($90B+ annual buybacks) provides downside support.
+    thesis_risks:
+      - China revenue exposure (~20% of sales) amid geopolitical tension
+      - Antitrust regulation forcing App Store fee reductions
+      - iPhone upgrade cycle slowdown
+    purchases:
+      - date: "2025-01-15"
+        dollars: 5000
+        price_per_share: 230.00
+      - date: "2025-06-01"
+        dollars: 3000
+        price_per_share: 210.00
+    earnings_date: "2026-04-24"
+    watch_events:
+      - WWDC AI announcements
+      - China regulatory changes
+      - App Store antitrust rulings
+
+  - ticker: NVDA
+    name: NVIDIA Corporation
+    sector: semiconductor
+    role: growth-conviction
+    target_multiple: 40
+    thesis: >
+      Dominant AI accelerator platform with 80%+ data center GPU market share.
+      CUDA software moat makes switching costly. Data center revenue doubling YoY.
+      Positioned to capture AI infrastructure buildout for next 5+ years.
+    thesis_risks:
+      - Customer concentration (hyperscalers could design custom chips)
+      - Export controls limiting China sales
+      - AMD/Intel competitive response in AI accelerators
+      - Valuation premium requires sustained hypergrowth
+    purchases:
+      - date: "2025-03-01"
+        dollars: 4000
+        price_per_share: 800.00
+      - date: "2025-09-15"
+        dollars: 2000
+        price_per_share: 950.00
+    earnings_date: "2026-05-21"
+    watch_events:
+      - Data center GPU market share reports
+      - Hyperscaler capex guidance
+      - US-China export control updates
+
+  - ticker: MSFT
+    name: Microsoft Corporation
+    sector: technology
+    role: core-holding
+    target_multiple: 32
+    thesis: >
+      Azure cloud growing 30%+ with AI services (OpenAI partnership) as key
+      differentiator. Office 365 + Copilot driving enterprise AI adoption.
+      Diversified revenue streams provide stability. Strong free cash flow generation.
+    thesis_risks:
+      - OpenAI partnership economics and governance risks
+      - Cloud growth deceleration as market matures
+      - Antitrust scrutiny on Activision and AI market power
+    purchases:
+      - date: "2025-02-01"
+        dollars: 6000
+        price_per_share: 410.00
+      - date: "2025-07-10"
+        dollars: 2000
+        price_per_share: 440.00
+    earnings_date: "2026-04-22"
+    watch_events:
+      - Azure growth rate quarterly
+      - Copilot enterprise adoption metrics
+      - OpenAI partnership developments
+
+watchlist:
+  - ticker: AMZN
+    name: Amazon.com Inc.
+    sector: technology
+    reason: "AWS growth reacceleration + advertising business scaling. Watching for margin expansion."
+
+  - ticker: GOOGL
+    name: Alphabet Inc.
+    sector: technology
+    reason: "AI search transition risk vs. cloud + Waymo optionality. Waiting for clarity on Search moat."
